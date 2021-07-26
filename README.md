@@ -1,5 +1,5 @@
 # projeto-4-5
-## Implementation of a city database using unordered list using C 
+## Implementation of a city database using unordered list (C Lang) 
 ### Requisitos e características
 
 - A estrutura contém cidade e coordenada (x,y)
