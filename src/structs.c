@@ -3,6 +3,7 @@
 
 typedef int COORDS_TYPE;
 typedef char NAME_TYPE;
+typedef int BOOL; 
 
 typedef struct {
     COORDS_TYPE coords[2];

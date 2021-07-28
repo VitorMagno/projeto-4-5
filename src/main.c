@@ -9,10 +9,21 @@
     Colete estatísticas de tempo de execução para cada operação em ambas as implementações.
 */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "structs.c"
+#include "readFile.c"
 
 int main(){
     DATABASE db;
+    BOOL isRead = readFile(&db);
+    if(isRead == 0){
+        printf("Erro, nao foi possivel abrir o arquivo\n");
+        return 0;
+    }
+
+    // printf("%d = isRead", isRead);
+    
 
     return 0;
 }
