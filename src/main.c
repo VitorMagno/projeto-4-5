@@ -1,5 +1,3 @@
-// main function
-
 /*
     Implemente um banco de dados da cidade usando listas não ordenadas. 
     Cada registro do banco de dados contém o nome da cidade (uma string de comprimento arbitrário)
@@ -11,9 +9,10 @@
     Colete estatísticas de tempo de execução para cada operação em ambas as implementações.
 */
 #include <stdio.h>
+#include "structs.c"
 
 int main(){
-
+    DATABASE db;
 
     return 0;
 }
