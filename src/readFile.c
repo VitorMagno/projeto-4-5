@@ -1,13 +1,12 @@
-BOOL readFile(DATABASE* db){
+int readFile(DATABASE* db){
     int count = 0;
     char end[] = {"end"};
     char data[50];
     char cityName[50];
-    int cityLat;
-    int cityLong;
+    int cityLat, cityLong;
 
     FILE *arquivo = fopen("./db/cities.txt", "r");
-    if(arquivo == NULL) return 0;
+    if(arquivo == NULL) return -1;
     
     while(!feof(arquivo)){
         fscanf(arquivo, "%s %d %d", cityName, &cityLat, &cityLong);
@@ -21,12 +20,9 @@ BOOL readFile(DATABASE* db){
         db->city[count].coords[0] = cityLat;
         db->city[count].coords[1] = cityLong;
 
-        printf("%s %d %d\n", db->city[count].name, db->city[count].coords[0], db->city[count].coords[1]);
-
-        // break;
         ++count;
     }
     fclose(arquivo);
 
-    return 1;
+    return count;
 }

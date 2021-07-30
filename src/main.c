@@ -13,17 +13,19 @@
 #include <string.h>
 #include "structs.c"
 #include "readFile.c"
+#include "insert.c"
+#include "menu.c"
 
 int main(){
     DATABASE db;
-    BOOL isRead = readFile(&db);
-    if(isRead == 0){
+    int dbLength = readFile(&db);
+    if(dbLength == -1){
         printf("Erro, nao foi possivel abrir o arquivo\n");
         return 0;
+    } else {
+        // printf("%d\n", dbLength);
+        menu(dbLength, &db);
     }
-
-    // printf("%d = isRead", isRead);
-    
 
     return 0;
 }
