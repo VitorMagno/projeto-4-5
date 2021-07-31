@@ -16,6 +16,12 @@ int readFile(DATABASE* db){
             break;
         }
 
+        for(int i = 0; i < strlen(cityName); i++){
+            if(cityName[i] == '_'){
+                cityName[i] = ' ';
+            }
+        }
+
         strcpy(db->city[count].name, cityName);
         db->city[count].coords[0] = cityLat;
         db->city[count].coords[1] = cityLong;

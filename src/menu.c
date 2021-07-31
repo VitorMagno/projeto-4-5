@@ -2,6 +2,12 @@ void menu();
 void insert_city();
 int answer = 0;
 
+void toLower(NAME_TYPE str[], int strLength, int index){
+    if(index >= strLength) return;
+    str[index] = tolower(str[index]);
+    toLower(str, strLength, ++index);
+}
+
 void print_cities(int dbLength, DATABASE* db){
     system("clear");
     char keyInput;
@@ -16,43 +22,60 @@ void print_cities(int dbLength, DATABASE* db){
     }
 }
 
-void search_city(DATABASE* db, char newCityName[], int newCityCoords[], int dbLength){
-    int option = 0;
+int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords[], int dbLength){
     newCityCoords[0] = 0;
     newCityCoords[1] = 0;
+    char option = '0';
+    int cityPosition = INVALID;
 
     system("clear");
-    printf("1 - Buscar por nome\n2 - Buscar por coordenada\n");
-    scanf("%d", &option);
-        switch (option)
-        {
-            case 1:
-            scanf(" %[^\n]", newCityName);
-            break;
+    printf("\n1 - Buscar por nome\n2 - Buscar por coordenada\n");
+    scanf(" %c", &option);
 
-            case 2:
-            printf("Latitude:\n");
-            scanf("%d", &newCityCoords[0]);    //lat
-            printf("Longitude:\n");
-            scanf("%d", &newCityCoords[1]);    //long
-            break;
+    switch (option){
+        case '1':
+        printf("Insira o nome da cidade:\n");
+        scanf(" %[^\n]", newCityName);
+        break;
 
-            default:
-            printf("Opção inválida");
-            search_city(db, newCityName, newCityCoords, dbLength);
-        }
-    
-    for (int i = 0; i < dbLength; i++){
-        //compara o nome dado ou newCityCoords[s a lista de cidades e printa nome ou newCityCoords[
-        if (db->city[i].name == newCityName || (db->city[i].coords[0] == newCityCoords[0] && 
-        db->city[i].coords[1] == newCityCoords[1])){
-            printf("A cidade %s foi encontrada na coordenada [%d, %d]\n", db->city[i].name, db->city[i].coords[0], db->city[i].coords[0]);
-        }
-        else
-        {
-            printf("Cidade nao encontrada\n");
+        case '2':
+        printf("Latitude:\n");
+        scanf("%d", &newCityCoords[0]);    //lat
+        printf("Longitude:\n");
+        scanf("%d", &newCityCoords[1]);    //long
+        break;
+
+        default:
+        printf("Opção inválida");
+        search_city(db, newCityName, newCityCoords, dbLength);
+    }
+
+    for(int j = 0; j < dbLength; j++){
+        NAME_TYPE auxName[20];
+        strcpy(auxName, db->city[j].name);
+
+        toLower(auxName, strlen(auxName), 0);
+        toLower(newCityName, strlen(newCityName), 0);
+        
+        int strVerify = strcmp(auxName, newCityName);
+
+        if(strVerify == 0 || (db->city[j].coords[0] == newCityCoords[0] && 
+        db->city[j].coords[1] == newCityCoords[1])){
+            cityPosition = j;
+            printf("CIDADE ENCONTRADA -> %s [%d,%d]\n", db->city[j].name, db->city[j].coords[0], db->city[j].coords[1]);
             break;
+        } else if(j == dbLength - 1){
+            printf("CIDADE NÃO ECONTRADA.\n");
         }
+    }
+    if(cityPosition != INVALID) return cityPosition;
+
+    char keyInput;
+    printf("\n\nPressione 'ENTER' para voltar");
+    setbuf(stdin, NULL);
+    while(keyInput != 10){
+        scanf("%c", &keyInput);
+        if(keyInput == 10) menu(dbLength, db);
     }
 }
 
@@ -63,20 +86,19 @@ void escolha(int dbLength, DATABASE* db, int answer){
         print_cities(dbLength, db);
         break;
 
-        case 2: printf("implementando:buscar");
+        case 2:
+        printf("\n");
         char newCityName[20];
-        int newCityCoords[2];
+        COORDS_TYPE newCityCoords[2];
         search_city(db, newCityName, newCityCoords, dbLength);
-        menu();
         break;
 
-        case 3: printf("inserir"); //insert_city();
-        insert_city(dbLength, db);
-        // menu();
+        case 3: 
+        insert_city(dbLength, db);//insert_city();
         break;
 
-        case 4: printf("excluir"); //delete_city();
-        menu();
+        case 4: 
+        delete_city(dbLength, db); //delete_city();
         break;
 
         default: printf("opção incorreta");

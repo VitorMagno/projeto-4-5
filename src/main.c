@@ -1,7 +1,7 @@
 /*
     Implemente um banco de dados da cidade usando listas não ordenadas. 
     Cada registro do banco de dados contém o nome da cidade (uma string de comprimento arbitrário)
-    e as coordenadas da cidade expressa como coordenadas xey inteiras. Seu banco de dados deve
+    e as coordenadas da cidade expressa como coordenadas x e y inteiras. Seu banco de dados deve
     permite que os registros sejam inseridos, excluídos por nome ou coordenada e pesquisados
     por nome ou coordenada. Outra operação que deve ser suportada é imprimir todos os registros 
     dentro de uma determinada distância de um ponto especificado. Implementar o banco de dados usando
@@ -10,10 +10,11 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 #include "structs.c"
 #include "readFile.c"
-#include "insert.c"
+#include "insertAndDelete.c"
 #include "menu.c"
 
 int main(){

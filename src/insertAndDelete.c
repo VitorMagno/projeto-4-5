@@ -1,4 +1,5 @@
 void menu();
+int search_city();
 
 void insert_city(int dbLength, DATABASE* db) {
     // Input data
@@ -30,5 +31,23 @@ void insert_city(int dbLength, DATABASE* db) {
     keyInput == 's' ? insert_city(dbLength, db) : menu(dbLength, db);
 
     // Return status
+
+}
+
+void delete_city(int dbLength, DATABASE* db){
+    // Input data
+    system("clear");
+    char option;
+    COORDS_TYPE newCityCoords[2];
+    char newCityName[20]; 
+    int cityPosition = search_city(db, newCityName, newCityCoords, dbLength);
+    printf("%d\n", cityPosition);
+    
+    strcpy(db->city[i].name, '*');
+
+    for(int i = cityPosition; i < dbLength; i++){
+        db->city[i]
+    }
+
 
 }

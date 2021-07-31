@@ -1,6 +1,6 @@
-Maceio 123456 654321 
-Sao_Paulo 123456 654321 
-Rio_de_Janeiro 123456 654321 
-Marechal_Deodoro 123456 654321 
-Arapiraca 123456 654321
+Maceio 827259 700322 
+Sao_Paulo 77241 437160 
+Rio_de_Janeiro 260137 158683 
+Marechal_Deodoro 600151 132245 
+Arapiraca 94487 31446
 end
