@@ -10,7 +10,16 @@ typedef struct {
     NAME_TYPE name[30];
 } CITIES;
 
+
+struct list_rec {
+  CITIES elem;
+  struct list_rec *lig;
+};
+
+
+typedef struct list_rec Rec;
 typedef struct {
-    CITIES city;
-    
+  CITIES city;
+  Rec *head;
+  int nelem;
 } DATABASE;

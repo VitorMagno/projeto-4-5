@@ -22,6 +22,17 @@ void insert_city(int dbLength, DATABASE* db) {
     db->city[dbLength].coords[0] = newCityCoords[0];
     db->city[dbLength].coords[1] = newCityCoords[1];
 
+
+    // void Insere_Inicio(DATABASE *L, CITIES elem){
+    // Rec *p;
+    // p = malloc(sizeof(Rec));
+    // p->elem = elem;
+    // p->lig = L->head;
+    // L->head = p;
+    // L-> nelem++;
+    // }
+
+
     ++dbLength;
 
     printf("\nDeseja adicionar uma nova cidade - [s/n]\n");
