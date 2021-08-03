@@ -55,7 +55,6 @@ void delete_city(int dbLength, DATABASE* db){
             db->city[i].coords[1] = db->city[i + 1].coords[1];
             db->city[i + 1].coords[0] = INVALID;
             db->city[i + 1].coords[1] = INVALID;
-
         }
     }
 

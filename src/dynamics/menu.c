@@ -82,19 +82,19 @@ int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords
 void list_distance_cities(int dbLength, DATABASE* db){
     system("clear");
     char keyInput;
-    COORDS_TYPE newCityCoords[2]; 
+    COORDS_TYPE CityCoords[2]; 
     double distance;
     printf("- LISTAR DISTÂNCIA CIDADES -\n\n");
 
     printf("Informe a Latitude da cidade:\n");
-    scanf("%d", &newCityCoords[0]);
+    scanf("%d", &CityCoords[0]);
 
     printf("Informe a Longitude da cidade:\n");
-    scanf("%d", &newCityCoords[1]);
+    scanf("%d", &CityCoords[1]);
 
     for(int i = 0; i < dbLength; ++i){
-        int qua1 = pow(db->city[i].coords[0] - newCityCoords[0], 2);
-        int qua2 = pow(db->city[i].coords[1] - newCityCoords[1], 2);
+        int qua1 = pow(db->city[i].coords[0] - CityCoords[0], 2);
+        int qua2 = pow(db->city[i].coords[1] - CityCoords[1], 2);
         distance = sqrt(qua1 + qua2);
         if(distance > 0) printf("%s -> %.2lf km\n", db->city[i].name, distance/1000);
     }

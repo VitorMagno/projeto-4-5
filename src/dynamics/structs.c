@@ -7,9 +7,10 @@ typedef int BOOL;
 
 typedef struct {
     COORDS_TYPE coords[2];
-    NAME_TYPE name[20];
+    NAME_TYPE name[30];
 } CITIES;
 
 typedef struct {
-    CITIES city[MAX];
+    CITIES city;
+    
 } DATABASE;

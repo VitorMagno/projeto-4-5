@@ -5,7 +5,7 @@ int readFile(DATABASE* db){
     char cityName[50];
     int cityLat, cityLong;
 
-    FILE *arquivo = fopen("./db/cities.txt", "r");
+    FILE *arquivo = fopen("../db/cities.txt", "r");
     if(arquivo == NULL) return -1;
     
     while(!feof(arquivo)){
