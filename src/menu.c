@@ -1,5 +1,3 @@
-#include <math.h>
-
 void menu();
 void insert_city();
 int answer = 0;
@@ -86,8 +84,8 @@ void list_distance_cities(int dbLength, DATABASE* db){
     system("clear");
     char keyInput;
     COORDS_TYPE CityCoords[2]; 
-    float distance;
-    printf("-LISTAR DISTÂNCIA CIDADES-\n\n");
+    double distance;
+    printf("- LISTAR DISTÂNCIA CIDADES -\n\n");
 
     printf("Informe a Latitude da cidade:\n");
     scanf("%d", &CityCoords[0]);
@@ -99,7 +97,7 @@ void list_distance_cities(int dbLength, DATABASE* db){
         int qua1 = pow(db->city[i].coords[0] - CityCoords[0], 2);
         int qua2 = pow(db->city[i].coords[1] - CityCoords[1], 2);
         distance = sqrt(qua1 + qua2);
-        printf("%s -> %.2f\n", db->city[i].name, distance);
+        if(distance > 0) printf("%s -> %.2lf\n", db->city[i].name, distance);
     }
 
     printf("\n\nPressione 'ENTER' para voltar");
@@ -110,9 +108,10 @@ void list_distance_cities(int dbLength, DATABASE* db){
     }
 }
 
-
-
 void escolha(int dbLength, DATABASE* db, int answer){
+    char newCityName[20];
+    COORDS_TYPE newCityCoords[2];
+
     switch(answer){
         case 1: 
         //printf("Cidades");
@@ -120,9 +119,6 @@ void escolha(int dbLength, DATABASE* db, int answer){
         break;
 
         case 2:
-        printf("\n");
-        char newCityName[20];
-        COORDS_TYPE newCityCoords[2];
         search_city(db, newCityName, newCityCoords, dbLength);
         break;
 
@@ -134,7 +130,7 @@ void escolha(int dbLength, DATABASE* db, int answer){
         delete_city(dbLength, db); //delete_city();
         break;
 
-        case 5: printf("listar distância"); //list_distance
+        case 5: //list_distance
         list_distance_cities(dbLength, db);
         break;
 

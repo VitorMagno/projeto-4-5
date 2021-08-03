@@ -31,7 +31,6 @@ void insert_city(int dbLength, DATABASE* db) {
     keyInput == 's' ? insert_city(dbLength, db) : menu(dbLength, db);
 
     // Return status
-
 }
 
 void delete_city(int dbLength, DATABASE* db){
@@ -43,11 +42,22 @@ void delete_city(int dbLength, DATABASE* db){
     int cityPosition = search_city(db, newCityName, newCityCoords, dbLength);
     printf("%d\n", cityPosition);
     
-    strcpy(db->city[i].name, '*');
+    strcpy(db->city[cityPosition].name, "**");
+    db->city[cityPosition].coords[0] = INVALID;
+    db->city[cityPosition].coords[1] = INVALID;
 
-    for(int i = cityPosition; i < dbLength; i++){
-        db->city[i]
+    for(int i = cityPosition; i < dbLength - 1; i++){
+        if(strcmp(db->city[i].name, "**") == 0){
+            strcpy(db->city[i].name, db->city[i + 1].name);
+            strcpy(db->city[i + 1].name, "**");
+
+            db->city[i].coords[0] = db->city[i + 1].coords[0];
+            db->city[i].coords[1] = db->city[i + 1].coords[1];
+            db->city[i + 1].coords[0] = INVALID;
+            db->city[i + 1].coords[1] = INVALID;
+
+        }
     }
 
-
+    menu(dbLength - 1, db);
 }

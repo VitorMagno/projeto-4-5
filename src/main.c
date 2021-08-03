@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 #include <string.h>
 #include "structs.c"
 #include "readFile.c"
@@ -24,7 +25,6 @@ int main(){
         printf("Erro, nao foi possivel abrir o arquivo\n");
         return 0;
     } else {
-        // printf("%d\n", dbLength);
         menu(dbLength, &db);
     }
 
