@@ -18,7 +18,7 @@ void print_cities(int dbLength, DATABASE* db){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(dbLength, db);
+        if(keyInput == 10) menu(head); menu(dbLength, db);
     }
 }
 
@@ -75,7 +75,7 @@ int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(dbLength, db);
+        if(keyInput == 10) menu(head); menu(dbLength, db);
     }
 }
 
@@ -103,7 +103,7 @@ void list_distance_cities(int dbLength, DATABASE* db){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(dbLength, db);
+        if(keyInput == 10) menu(head); menu(dbLength, db);
     }
 }
 

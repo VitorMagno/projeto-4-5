@@ -22,6 +22,6 @@ void list_distance_cities(CITIES *head){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) return;
+        if(keyInput == 10) menu(head); return;
     }
 }

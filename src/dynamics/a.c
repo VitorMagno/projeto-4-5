@@ -71,7 +71,7 @@ void listar (CITIES *current_node)
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) return;
+        if(keyInput == 10) menu(head); return;
     }
 }
 
@@ -100,7 +100,7 @@ void list_distance_cities(CITIES *head){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) return;
+        if(keyInput == 10) menu(head); return;
     }
 }
 
@@ -144,7 +144,7 @@ void inserir (CITIES **head)
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) return;
+        if(keyInput == 10) menu(head); return;
     }
 }
 
@@ -187,7 +187,7 @@ void inserir (CITIES **head)
         setbuf(stdin, NULL);
         while(keyInput != 10){
             scanf("%c", &keyInput);
-            if(keyInput == 10) return;
+            if(keyInput == 10) menu(head); return;
         }
     }
 }*/
@@ -234,6 +234,6 @@ void buscar(CITIES *head)
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) return;
+        if(keyInput == 10) menu(head); return;
     }
 }

@@ -1,7 +1,7 @@
 void menu();
-int search_city();
+void search_city();
 
-void insert_city(CITIES **head){
+void insert_city(CITIES *head){
     CITIES *current_node, *new_node;
     char name_city[30];
     int latitude = 0, longitude = 0;
@@ -13,14 +13,14 @@ void insert_city(CITIES **head){
     printf("Longitude: ");
     scanf("%d", &longitude);
 
-    if (*head == NULL){
-        *head = (CITIES *) malloc(sizeof(CITIES));
-        strcpy((*head)->name_city, name_city);
-        (*head)->coords_city[0] = latitude;
-        (*head)->coords_city[1] = longitude;
-        (*head)->next = NULL;
+    if (head == NULL){
+        head = (CITIES *) malloc(sizeof(CITIES));
+        strcpy((head)->name_city, name_city);
+        (head)->coords_city[0] = latitude;
+        (head)->coords_city[1] = longitude;
+        (head)->next = NULL;
     } else {
-        current_node = *head;
+        current_node = head;
         while(current_node->next != NULL) current_node = current_node->next;
         
         new_node = (CITIES *) malloc(sizeof(CITIES));
@@ -30,18 +30,24 @@ void insert_city(CITIES **head){
         new_node->next = NULL;
         current_node->next = new_node;     
     }
+
+    // current_node = head;
+    // while(current_node->next != NULL){
+    //     printf("%s\n", new_node->name_city);
+    //     current_node = current_node->next;
+    // }
     
     printf("\nDeseja adicionar uma nova cidade - [s/n]\n");
 
     char keyInput;
     scanf(" %c", &keyInput);
-    keyInput == 's' ? insert_city(*head) : menu(head);
+    keyInput == 's' ? insert_city(head) : menu(head);
 }
 
-void delete(CITIES **head)
+void delete_city(CITIES *head)
 {
-    CITIES *current_node = *head;
-    CITIES *aux = *head; 
+    CITIES *current_node = head;
+    CITIES *aux = head; 
     char name_city[30];
     int latitude = 0, longitude = 0;
     printf("Nome da cidade: ");
@@ -55,8 +61,8 @@ void delete(CITIES **head)
     {   
         while (current_node != NULL){
             if (strcmp(current_node->name_city, name_city) == 0){
-                if(current_node == *head){
-                    *head = (*head)->next;
+                if(current_node == head){
+                    head = (head)->next;
                     free(current_node);
                     break;
                 } else {
@@ -77,7 +83,7 @@ void delete(CITIES **head)
         setbuf(stdin, NULL);
         while(keyInput != 10){
             scanf("%c", &keyInput);
-            if(keyInput == 10) return;
+            if(keyInput == 10) menu(head); return;
         }
     }
 }

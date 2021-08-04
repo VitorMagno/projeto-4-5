@@ -1,40 +1,39 @@
-void menu();
+void print_cities();
+// void search_city();
 void insert_city();
-int answer = 0;
+void delete_city();
+void list_distance_cities();
 
-void toLower(NAME_TYPE str[], int strLength, int index){
-    if(index >= strLength) return;
-    str[index] = tolower(str[index]);
-    toLower(str, strLength, ++index);
-}
+void menu();
+int answer = 0;
 
 void escolha(CITIES *head, int answer){
     char newCityName[20];
     int newCityCoords[2];
 
     switch(answer){
-        case '1': 
+        case 1: 
         print_cities(head);
         break;
 
-        case '2':
-        search_city(db, newCityName, newCityCoords, dbLength);
+        case 2:
+        search_city(head);
         break;
 
-        case '3': 
-        insert_city(&head);//insert_city();
+        case 3: 
+        insert_city(head);//insert_city();
         break;
 
-        case '4': 
-        delete_city(dbLength, db); //delete_city();
+        case 4: 
+        delete_city(head); //delete_city();
         break;
 
-        case '5': //list_distance
+        case 5: //list_distance
         list_distance_cities(head);
         break;
 
         default: printf("opção incorreta");
-        menu();
+        menu(head);
         break;
     }
 }
