@@ -39,8 +39,7 @@ void delete_city(int dbLength, DATABASE* db){
     char option;
     COORDS_TYPE newCityCoords[2];
     char newCityName[20]; 
-    int cityPosition = search_city(db, newCityName, newCityCoords, dbLength);
-    printf("%d\n", cityPosition);
+    int cityPosition = search_city(db, newCityName, newCityCoords, dbLength, 1);
     
     strcpy(db->city[cityPosition].name, "**");
     db->city[cityPosition].coords[0] = INVALID;
@@ -57,6 +56,13 @@ void delete_city(int dbLength, DATABASE* db){
             db->city[i + 1].coords[1] = INVALID;
         }
     }
-
-    menu(dbLength - 1, db);
+    printf("Cidade removida\n");
+    
+    char keyInput;
+    printf("\n\nPressione 'ENTER' para voltar");
+    setbuf(stdin, NULL);
+    while(keyInput != 10){
+        scanf("%c", &keyInput);
+        if(keyInput == 10) menu(dbLength - 1, db);
+    }
 }

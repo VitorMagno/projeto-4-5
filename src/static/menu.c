@@ -18,11 +18,11 @@ void print_cities(int dbLength, DATABASE* db){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(head); menu(dbLength, db);
+        if(keyInput == 10) menu(dbLength, db);
     }
 }
 
-int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords[], int dbLength){
+int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords[], int dbLength, int isDelete){
     newCityCoords[0] = 0;
     newCityCoords[1] = 0;
     char option = '0';
@@ -47,7 +47,7 @@ int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords
 
         default:
         printf("Opção inválida");
-        search_city(db, newCityName, newCityCoords, dbLength);
+        search_city(db, newCityName, newCityCoords, dbLength, 0);
     }
 
     for(int j = 0; j < dbLength; j++){
@@ -68,14 +68,14 @@ int search_city(DATABASE* db, NAME_TYPE newCityName[], COORDS_TYPE newCityCoords
             printf("CIDADE NÃO ECONTRADA.\n");
         }
     }
-    if(cityPosition != INVALID) return cityPosition;
+    if(cityPosition != INVALID && isDelete == 1) return cityPosition;
 
     char keyInput;
     printf("\n\nPressione 'ENTER' para voltar");
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(head); menu(dbLength, db);
+        if(keyInput == 10) menu(dbLength, db);
     }
 }
 
@@ -103,7 +103,7 @@ void list_distance_cities(int dbLength, DATABASE* db){
     setbuf(stdin, NULL);
     while(keyInput != 10){
         scanf("%c", &keyInput);
-        if(keyInput == 10) menu(head); menu(dbLength, db);
+        if(keyInput == 10) menu(dbLength, db);
     }
 }
 
@@ -118,7 +118,7 @@ void escolha(int dbLength, DATABASE* db, int answer){
         break;
 
         case 2:
-        search_city(db, newCityName, newCityCoords, dbLength);
+        search_city(db, newCityName, newCityCoords, dbLength, 0);
         break;
 
         case 3: 
@@ -133,6 +133,11 @@ void escolha(int dbLength, DATABASE* db, int answer){
         list_distance_cities(dbLength, db);
         break;
 
+        case 0: //end program
+        system("clear");
+        exit(0);
+        break;
+
         default: printf("opção incorreta");
         menu();
         break;
@@ -144,6 +149,7 @@ void menu(int dbLength, DATABASE* db){
     printf("BEM-VINDO AO BANCO DE DADOS DA AMBROLÂNDIA\nUTILIZE O MENU ABAIXO PARA UTILIZAR NOSSO SISTEMA.\n");
     printf("1 - Listar as cidades do nosso território\n2 - Buscar cidades próximas\n");
     printf("3 - Inserir uma cidade nova\n4 - Excluir uma cidade\n5 - Listar distância das cidades\n\n");
+    printf("0 - Sair\n\n");
     scanf("%d", &answer);
     escolha(dbLength, db, answer);
 }

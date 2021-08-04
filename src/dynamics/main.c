@@ -15,8 +15,8 @@
 #include <string.h>
 #include "./functions/structs.c"
 #include "./functions/readFile.c"
-#include "./functions/insertAndDelete.c"
 #include "./functions/menu.c"
+#include "./functions/insertAndDelete.c"
 #include "./functions/print_cities.c"
 #include "./functions/search_city.c"
 #include "./functions/list_distance_cities.c"
