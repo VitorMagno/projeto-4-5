@@ -139,7 +139,7 @@ void escolha(int dbLength, DATABASE* db, int answer){
         break;
 
         default: printf("opção incorreta");
-        menu();
+        menu(dbLength, db);
         break;
     }
 }
