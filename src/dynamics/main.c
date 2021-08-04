@@ -13,19 +13,23 @@
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
-#include "structs.c"
-#include "readFile.c"
-#include "insertAndDelete.c"
-#include "menu.c"
+#include "./functions/structs.c"
+#include "./functions/readFile.c"
+#include "./functions/insertAndDelete.c"
+#include "./functions/menu.c"
+#include "./functions/print_cities.c"
+#include "./functions/search_city.c"
+#include "./functions/list_distance_cities.c"
 
 int main(){
-    DATABASE db;
-    int dbLength = readFile(&db);
-    if(dbLength == -1){
+    CITIES *head = NULL;
+    CITIES *current_node = head;
+    int err = readFile(&head);
+    if(err == -1){
         printf("Erro, nao foi possivel abrir o arquivo\n");
         return 0;
     } else {
-        menu(dbLength, &db);
+        menu(head);
     }
 
     return 0;
