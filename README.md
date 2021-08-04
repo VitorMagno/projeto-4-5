@@ -10,6 +10,6 @@
 
 ### Questões posteriores
 
-- Qual implementação tem mais desempenho?
-- Introduzir novos itens na lista ordenando-os melhoraria o desempenho das operações?
-- Manter a lista em ordem alfabética diminuiria o desempenho de alguma operação?
+- Qual implementação tem mais desempenho? Depende da função executada
+- Introduzir novos itens na lista ordenando-os melhoraria o desempenho das operações? Algumas operações melhoraria sim
+- Manter a lista em ordem alfabética diminuiria o desempenho de alguma operação? Sim, de inserção.
