@@ -1,9 +1,7 @@
 int readFile(CITIES **head){
 
     CITIES *current_node, *nvono;
-    int count = 0;
     char end[] = {"end"};
-    char data[50];
     char cityName[50];
     int cityLat, cityLong;
 
@@ -45,5 +43,5 @@ int readFile(CITIES **head){
     }
     fclose(arquivo);
 
-
+    return 0;
 }

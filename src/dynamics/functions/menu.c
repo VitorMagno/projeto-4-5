@@ -1,5 +1,5 @@
 void print_cities();
-// void search_city();
+void search_city();
 void insert_city();
 void delete_city();
 void list_distance_cities();
@@ -8,8 +8,7 @@ void menu();
 int answer = 0;
 
 void escolha(CITIES *head, int answer){
-    char newCityName[20];
-    int newCityCoords[2];
+
 
     switch(answer){
         case 1: 

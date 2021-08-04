@@ -23,7 +23,6 @@
 
 int main(){
     CITIES *head = NULL;
-    CITIES *current_node = head;
     int err = readFile(&head);
     if(err == -1){
         printf("Erro, nao foi possivel abrir o arquivo\n");

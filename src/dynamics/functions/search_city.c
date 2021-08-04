@@ -83,8 +83,8 @@ void search_city(CITIES *head)
     }
 }
 
-void toLower(char str[], int strLength, int index){
+/*void toLower(char str[], int strLength, int index){
     if(index >= strLength) return;
     str[index] = tolower(str[index]);
     toLower(str, strLength, ++index);
-}
+}*/
