@@ -2,11 +2,11 @@
 ## Implementation of a city database using unordered list (C Lang) 
 ### Requisitos e características
 
-[x] A estrutura contém cidade e coordenada (x,y) 
-[x] Capacidade de inserir novos elementos
-[x] Capacidade de buscar por nome ou coordenada e deletar elementos
-[x] Mostrar todos os elementos e distâncias a um dado ponto
-[x] Implementar usando uma lista baseada em array e em uma lista encadeada
+- [x] A estrutura contém cidade e coordenada (x,y) 
+- [x] Capacidade de inserir novos elementos
+- [x] Capacidade de buscar por nome ou coordenada e deletar elementos
+- [x] Mostrar todos os elementos e distâncias a um dado ponto
+- [x] Implementar usando uma lista baseada em array e em uma lista encadeada
 
 ### Questões posteriores
 
